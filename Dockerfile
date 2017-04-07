@@ -19,7 +19,7 @@ RUN chmod +x /usr/local/bin/net_speeder
 ENV S_PORT:$PORT
 ENV S_PASSWORD:$PASSWORD
 ENV S_METHOD:$METHOD
-RUN sudo ssserver -p S_PORT -k S_PASSWORD -m S_METHOD
+RUN sudo ssserver -p S_PORT -k S_PASSWORD -m S_METHOD --user nobody -d start
 
 # Configure container to run as an executable
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
