@@ -19,7 +19,7 @@ RUN chmod +x /usr/local/bin/net_speeder
 ENV PORT 6323
 ENV PASSWORD 666323
 ENV METHOD aes-256-cfb
-RUN sudo ssserver -p PORT -k PASSWORD -m METHOD --user nobody -d start
+RUN sudo ssserver -p $PORT -k $PASSWORD -m $METHOD --user nobody -d start
 
 # Configure container to run as an executable
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
