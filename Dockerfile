@@ -3,7 +3,7 @@
 FROM ubuntu:14.04.3
 MAINTAINER Iniv
 RUN apt-get update && \
-    apt-get install python-pip
+    apt-get install -y python-pip libnet1 libnet1-dev libpcap0.8 libpcap0.8-dev git
 
 RUN pip install git+https://github.com/shadowsocks/shadowsocks.git@master
 
