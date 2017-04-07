@@ -16,10 +16,10 @@ COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/net_speeder
 
-ENV S_PORT:$PORT
-ENV S_PASSWORD:$PASSWORD
-ENV S_METHOD:$METHOD
-RUN sudo ssserver -p S_PORT -k S_PASSWORD -m S_METHOD --user nobody -d start
+ENV PORT 6323
+ENV PASSWORD 666323
+ENV METHOD aes-256-cfb
+RUN sudo ssserver -p PORT -k PASSWORD -m METHOD --user nobody -d start
 
 # Configure container to run as an executable
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
