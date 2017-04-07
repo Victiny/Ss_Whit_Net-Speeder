@@ -1,6 +1,6 @@
 # shadowsocks-net-speeder
 
-FROM ubuntu:14.04.3
+FROM ubuntu:16.04
 MAINTAINER Iniv
 RUN apt-get update && \
     apt-get install -y python-pip libnet1 libnet1-dev libpcap0.8 libpcap0.8-dev git
@@ -16,7 +16,10 @@ COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/net_speeder
 
-RUN sudo ssserver -p 6323 -k 666323 -m aes-256-cfb
+ENV S_PORT:$PORT
+ENV S_PASSWORD:$PASSWORD
+ENV S_METHOD:$METHOD
+RUN sudo ssserver -p S_PORT -k S_PASSWORD -m S_METHOD
 
 # Configure container to run as an executable
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
